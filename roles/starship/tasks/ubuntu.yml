@@ -1,0 +1,10 @@
+- name: Install from source
+  script:
+    cmd: install.sh --bin-dir "/usr/local/bin" --force
+    creates: "/usr/local/bin/starship"
+  become: true
+- name: Upload starship configuration
+  copy:
+    src: starship.toml
+    dest: /home/agluck/.config/starship.toml
+    follow: yes

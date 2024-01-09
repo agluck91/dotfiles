@@ -1,0 +1,17 @@
+default_roles:
+  - system
+  - fonts
+  - starship
+  - zsh
+  - ssh
+  - tailscale
+
+extra_roles:
+  - 1password
+  - alacritty
+  - asciiquarium
+  - docker
+  - git
+  - dev-tools
+  #  - neovim
+  - zellij
