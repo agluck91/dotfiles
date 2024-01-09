@@ -1,0 +1,29 @@
+---
+- name: Add alacritty terminal
+  apt_repository:
+    validate_certs: no
+    repo: "ppa:aslatter/ppa"
+    state: present
+  become: true
+
+- name: Install Alacritty terminal
+  apt:
+    name: alacritty
+    state: latest
+    update_cache: yes
+  become: true
+
+- name: Ensure alacritty config directory
+  file:
+    path: "{{ ansible_user_dir }}/.config/alacritty"
+    state: directory
+    mode: u=rxw,g=rx,o=rx
+- name: Copy alarityy configuration files
+  copy:
+    src: "alacritty.yml"
+    dest: "{{ ansible_user_dir }}/.config/alacritty/alacritty.yml"
+- name: Copy alacritty theme configuration
+  copy:
+    src: "catppuccin/"
+    dest: "{{ ansible_user_dir }}/.config/alacritty/catppuccin/"
+

@@ -18,13 +18,6 @@
     scope: global
     value: true
 
-# git config --global --add url."git@github.com:".insteadOf "https://github.com/"
-# - name: "Git | Set URL to SSH"
-#   community.general.git_config:
-#     name: URL
-#     scope: global
-#     value: "git@github.com"
-
 - name: "Git | Set init.defaultBranch"
   community.general.git_config:
     name: init.defaultBranch
@@ -48,10 +41,11 @@
     name: user.email
     scope: global
     value: "{{ git_user_email }}"
-  no_log: true
+  no_log: false
 
 - name: "Git | Set user.name"
   community.general.git_config:
     name: user.name
     scope: global
     value: "{{ git_user_name }}"
+  no_log: false

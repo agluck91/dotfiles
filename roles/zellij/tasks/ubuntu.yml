@@ -64,6 +64,7 @@
     - name: "Zellij | Extract zellij tar file"
       ansible.builtin.unarchive:
         src: "/tmp/{{ zellij_file }}.tar.gz"
+        remote_src: true
         dest: /tmp
 
     - name: "Zellij | Remove any current zellij installations"
@@ -77,8 +78,8 @@
         remote_src: true
         src: /tmp/zellij
         dest: /usr/local/bin/
-        owner: "{{ host_user }}"
-        group: "{{ host_user }}"
+        owner: "agluck"
+        group: "agluck"
         force: true
         mode: u=rwx,g=rx,o=rx
       become: true
@@ -91,8 +92,19 @@
     state: directory
     mode: u=rwx,g=rx,o=rx
 
-- name: "Zellij | Copy config"
+- name: "Zellij | Ensure zellij layouts directory exists"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/zellij/layouts"
+    state: directory
+    mode: u=rwx,g=rx,o=rx
+
+- name: "Zellij | Copy custom config"
   ansible.builtin.copy:
-    dest: "{{ ansible_user_dir }}/.config/zellij/config.yml"
+    dest: "{{ ansible_user_dir }}/.config/zellij/config.kdl"
     src: "config.kdl"
+    mode: u=rwx,g=rx,o=rx
+- name: "Zellij | Copy Custom Default Layout"
+  copy:
+    dest: "{{ ansible_user_dir }}/.config/zellij/layouts/default.kdl"
+    src: "default.kdl"
     mode: u=rwx,g=rx,o=rx

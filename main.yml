@@ -1,0 +1,27 @@
+---
+- name: Dotfiles Config
+  hosts: all
+
+  tasks:
+    - name: Include Secrets
+      include_vars: group_vars/secrets.yml
+      no_log: true
+
+    - name: Set Roles
+      set_fact:
+        run_roles: "{{ extra_roles + default_roles }}"
+      when: host_package == "full"
+
+    - name: Set Roles
+      set_fact:
+        run_roles: "{{ default_roles }}"
+      when: host_package == "default"
+
+    - name: Run Role Sets
+      debug:
+        var: run_roles
+
+    - name: Execute Roles
+      include_role:
+        name: "{{ item }}"
+      loop: "{{ run_roles }}"
