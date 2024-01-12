@@ -1,0 +1,7 @@
+ungrouped:
+  hosts:
+    test-vm-1.tail630c0.ts.net:
+  vars:
+    no_log: false
+    host_package: full
+    local: true
