@@ -1,1 +1,2 @@
-require('techdufus')
+require("setup")
+

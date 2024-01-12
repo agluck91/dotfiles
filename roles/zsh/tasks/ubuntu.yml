@@ -14,9 +14,9 @@
   git:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting
     dest: /home/agluck/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-- name: Upload zsh profile
-  copy:
-    src: .zshrc
+- name: Upload zshrc
+  template:
+    src: templates/.zshrc.j2
     dest: /home/agluck/.zshrc
     follow: yes
 - name: Upload zsh aliases

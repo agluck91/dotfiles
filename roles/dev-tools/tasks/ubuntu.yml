@@ -1,7 +1,10 @@
-- name: Install pyenv dependecies
+---
+## DEPS
+- name: Install dev_tools dependecies
   apt:
     pkg:
       - make
+      - gcc
       - build-essential
       - libssl-dev
       - zlib1g-dev
@@ -19,22 +22,37 @@
     update_cache: true
   become: true
 
-- name: Register pyenv install
-  stat:
-    path: "{{ ansible_user_dir }}/.pyenv"
-  register: pyenv_dir
-
-- name: Install PyEnv
+## PYENV/PYTHON
+- name: Install pyenv
   script:
     cmd: pyenv-installer
-  when: not pyenv_dir.stat.exists
+    creates: "{{ ansible_user_dir }}/.pyenv/"
+
+## GOLANG
+- name: Install golang
+  apt:
+    pkg:
+      - golang-go
+    state: latest
+  become: true
+
+## JS/TS
+- name: Install volta
+  script:
+    cmd: volta-installer
+    creates: "{{ ansible_user_dir }}/.volta/"
+
+- name: Install Node
+  command:
+    cmd: "{{ ansible_user_dir }}/.volta/bin/volta install node"
+    creates: "{{ ansible_user_dir }}/.volta/bin/node"
 
 
- #golang
+## RUST
+- name: Install rust/cargo
+  script:
+    cmd: sh.rustup.rs -y
+    creates: "{{ ansible_user_dir }}/.cargo/"
 
-# Node, volta, react, deno
-
-#Rust
-
-
-#Common Tools sshfs
+##k Common Tools
+### sshfs

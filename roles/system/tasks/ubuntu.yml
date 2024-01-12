@@ -16,6 +16,10 @@
       name:
         - jq
         - wget
+        - cmake
+        - pkg-config
+        - libtool
+        - unzip
         - exa
         - curl
         - ripgrep
@@ -27,7 +31,12 @@
         - ufw
       state: latest
     become: true
-
+  - name: Upload global ansible configuration
+    when: host_package == "full"
+    copy:
+      src: .ansible.cfg
+      dest: "{{ ansible_user_dir }}/.ansible.cfg"
+      follow: true
   - name: Configure firewall for mosh
     ufw:
       rule: allow

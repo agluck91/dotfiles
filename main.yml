@@ -9,7 +9,7 @@
 
     - name: Set Roles
       set_fact:
-        run_roles: "{{ extra_roles + default_roles }}"
+        run_roles: "{{ default_roles + extra_roles }}"
       when: host_package == "full"
 
     - name: Set Roles

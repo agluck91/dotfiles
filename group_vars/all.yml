@@ -13,5 +13,5 @@ extra_roles:
   - docker
   - git
   - dev-tools
-  #  - neovim
   - zellij
+  - neovim
