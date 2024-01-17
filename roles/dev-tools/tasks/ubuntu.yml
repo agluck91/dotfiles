@@ -54,6 +54,11 @@
     cmd: sh.rustup.rs -y
     creates: "{{ ansible_user_dir }}/.cargo/"
 
+## Make dev directory
+- name: Ensure project directory
+  file:
+    path: "{{ ansible_user_dir }}/projects/"
+    state: directory
 ##k Common dev_tools
 - name: Install sshfs
   apt:
