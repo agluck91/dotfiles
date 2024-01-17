@@ -1,8 +1,15 @@
 ---
-- name: "Neovim | Install"
+- name: Add neovim ppa
+  apt_repository:
+    validate_certs: no
+    repo: ppa:neovim-ppa/unstable
+    state: present
+  become: true
+- name: "Install neovim"
   apt:
     name: neovim
     state: present
+    update_cache: true
   become: true
 
 - name: "Establish Config folder"

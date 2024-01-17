@@ -54,5 +54,11 @@
     cmd: sh.rustup.rs -y
     creates: "{{ ansible_user_dir }}/.cargo/"
 
-##k Common Tools
-### sshfs
+##k Common dev_tools
+- name: Install sshfs
+  apt:
+    pkg:
+      - sshfs
+    state: latest
+  become: true
+
