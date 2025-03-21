@@ -1,10 +1,74 @@
-## Useful aliases
-# Replace ls with eza
-alias ls='eza -al --color=always --group-directories-first --icons' # preferred listing
-alias la='eza -a --color=always --group-directories-first --icons'  # all files and dirs
-alias ll='eza -l --color=always --group-directories-first --icons'  # long format
-alias lt='eza -aT --color=always --group-directories-first --icons' # tree listing
-alias l.="eza -a | grep -e '^\.'"                                     # show only dotfiles
+# System Aliases
+alias ls="exa --icons -gh --group-directories-first"
+alias ll="exa --icons -gh --group-directories-first -l"
+alias la="exa --icons -gh --group-directories-first -a"
+alias lla="exa --icons -gh --group-directories-first -la"
+alias llt="exa --icons --group-directories-first -T"
+alias cd="z"
+alias cdi="zi"
+alias ccat="/bin/cat"
+alias cat="bat -p -P"
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
+alias zshrc="nvim ~/.zshrc"
+alias fe="cd ~/dotfiles/ && nvim && cd ="
+alias tf="tail -f -n 1000"
+
+# Misc Aliases
+alias lg="lazygit"
+alias s="sesh connect \$(sesh list -i | gum filter --limit 1 --no-sort --fuzzy --placeholder 'Pick a sesh' --height 50 --prompt=' ')"
+
+# Docker Aliases
+alias drm="docker rm -f \$(docker ps -aq)"
+alias drmi="docker rmi -f \$(docker images -aq)"
+alias dclean="docker system prune -a"
+alias dnuke="drm; drmi; docker system prune -a --volumes --force"
+alias d="docker"
+alias dc="docker compose"
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
+alias dr="docker run"
+alias dex="docker exec -it"
+
+# Kubernetes Aliases
+alias k="kubectl"
+alias kg="kubectl get"
+alias kd="kubectl describe"
+alias krm="kubectl delete"
+alias kaf="kubectl apply -f"
+alias klo="kubectl logs -f"
+alias kex="kubectl exec -it"
+alias kpf="kubectl port-forward"
+alias kgi="kubectl get ingress"
+alias kgr="kubectl get roles"
+alias kga="kubectl get rolebindings"
+alias kgc="kubectl get configmaps"
+alias kgs="kubectl get secrets"
+alias kgn="kubectl get nodes"
+alias kdp="kubectl describe pods"
+alias kds="kubectl describe services"
+alias kdd="kubectl describe deployments"
+alias h="helm"
+alias hi="helm install"
+alias hu="helm uninstall"
+alias hl="helm list"
+alias hls="helm ls"
+alias hld="helm delete"
+alias hldp="helm delete --purge"
+
+# Git Aliases
+alias g="git"
+alias gs="git status"
+alias gaa="git add --all"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gca="git commit --amend"
+alias gco="git checkout"
+alias gcb="git checkout -b"
+alias gbr="git branch"
+alias gpl="git pull"
+alias gp="git push"
 
 # Common use
 alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"

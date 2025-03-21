@@ -1,8 +1,7 @@
 
 ## Source from conf.d before our fish config
-source ./conf.d/done.fish
-
-source ./alias.fish
+source ~/.config/fish/conf.d/done.fish
+source ~/.config/fish/alias.fish
 
 ## Set values
 ## Run fastfetch as welcome message
@@ -91,3 +90,4 @@ end
 
 
 starship init fish | source
+zoxide init fish | source
