@@ -21,5 +21,8 @@
     }
   },
   "theme.bar.location": "bottom",
-  "theme.bar.transparent": true
+  "theme.bar.transparent": true,
+  "notifications.position": "bottom",
+  "theme.notification.enableShadow": true,
+  "notifications.showActionsOnHover": true
 }
