@@ -37,6 +37,12 @@ if test -d ~/Applications/depot_tools
     end
 end
 
+if test (uname) = "Darwin"
+    set -gx PATH /opt/homebrew/bin $PATH  # For Apple Silicon
+    set -gx PATH /opt/hombrew/sbin $PATH
+    # set -gx PATH /usr/local/bin $PATH  # Uncomment for Intel Macs
+end
+
 
 ## Functions
 # Functions needed for !! and !$ https://github.com/oh-my-fish/plugin-bang-bang
