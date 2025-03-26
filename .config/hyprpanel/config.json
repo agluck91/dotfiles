@@ -4,10 +4,12 @@
       "left": [
         "dashboard",
         "workspaces",
-        "windowtitle"
+        "media"
       ],
       "middle": [
-        "media"
+        "windowtitle",
+        "clock",
+        "notifications"
       ],
       "right": [
         "volume",
@@ -15,14 +17,57 @@
         "bluetooth",
         "battery",
         "systray",
-        "clock",
-        "notifications"
+        "updates"
       ]
     }
   },
-  "theme.bar.location": "bottom",
+  "theme.bar.location": "top",
   "theme.bar.transparent": true,
-  "notifications.position": "bottom",
+  "notifications.position": "top",
   "theme.notification.enableShadow": true,
-  "notifications.showActionsOnHover": true
+  "notifications.showActionsOnHover": false,
+  "menus.clock.time.hideSeconds": true,
+  "dbus.notifications.enabled": true,
+  "bar.volume.label": false,
+  "bar.network.label": false,
+  "bar.network.showWifiInfo": true,
+  "bar.bluetooth.label": false,
+  "bar.battery.hideLabelWhenFull": false,
+  "bar.battery.label": false,
+  "bar.systray.ignore": [],
+  "bar.clock.format": "%a %b %d  %I:%M %p",
+  "bar.clock.showTime": true,
+  "bar.clock.showIcon": true,
+  "bar.media.show_active_only": true,
+  "bar.notifications.show_total": true,
+  "bar.notifications.hideCountWhenZero": true,
+  "theme.bar.buttons.notifications.enableBorder": false,
+  "theme.bar.buttons.enableBorders": true,
+  "theme.bar.buttons.borderSize": "0.02em",
+  "bar.scrollSpeed": 5,
+  "scalingPriority": "hyprland",
+  "bar.workspaces.show_icons": false,
+  "bar.workspaces.show_numbered": false,
+  "bar.workspaces.monitorSpecific": true,
+  "bar.workspaces.showWsIcons": true,
+  "bar.workspaces.workspaceIconMap": {
+    "1": "",
+    "2": "󰅭",
+    "3": "",
+    "4": "󰍡",
+    "5": "󰌳",
+    "6": "",
+    "7": "",
+    "8": "",
+    "9": "",
+    "10": ""
+  },
+  "theme.bar.floating": false,
+  "bar.windowtitle.title_map": [
+    [
+      "youtube",
+      "󰄛",
+      "Youtube"
+    ]
+  ]
 }

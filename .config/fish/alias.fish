@@ -12,12 +12,15 @@ alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
 alias zshrc="nvim ~/.zshrc"
-alias fe="cd ~/dotfiles/ && nvim && cd ="
+alias e="cd ~/dotfiles/ && nvim && cd -"
+alias a="cd ~/dotfiles/ && stow . && cd -"
 alias tf="tail -f -n 1000"
 
 # Misc Aliases
 alias lg="lazygit"
 alias s="sesh connect \$(sesh list -i | gum filter --limit 1 --no-sort --fuzzy --placeholder 'Pick a sesh' --height 50 --prompt=' ')"
+alias start-proxy="python ~/scripts/start-proxy.py"
+alias kill-proxy="python ~/scripts/kill-proxy.py"
 
 # Docker Aliases
 alias drm="docker rm -f \$(docker ps -aq)"
