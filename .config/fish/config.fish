@@ -6,7 +6,11 @@ source ~/.config/fish/alias.fish
 ## Set values
 ## Run fastfetch as welcome message
 function fish_greeting
-    fastfetch
+    if string match -q "cachyos" (grep -oP '(?<=^ID=).+' /etc/os-release)
+        fastfetch --logo arch --logo-padding-top 2 --logo-padding-left 2
+    else
+        fastfetch
+    end
 end
 
 # Format man pages

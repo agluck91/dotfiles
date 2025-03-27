@@ -19,8 +19,9 @@ alias tf="tail -f -n 1000"
 # Misc Aliases
 alias lg="lazygit"
 alias s="sesh connect \$(sesh list -i | gum filter --limit 1 --no-sort --fuzzy --placeholder 'Pick a sesh' --height 50 --prompt=' ')"
-alias start-proxy="python ~/scripts/start-proxy.py"
-alias kill-proxy="python ~/scripts/kill-proxy.py"
+alias start-proxy="python3 ~/scripts/start-proxy.py"
+alias kill-proxy="python3 ~/scripts/kill-proxy.py"
+alias os-icon="python3 ~/scripts/os-icon.py"
 
 # Docker Aliases
 alias drm="docker rm -f \$(docker ps -aq)"
