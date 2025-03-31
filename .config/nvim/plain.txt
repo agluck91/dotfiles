@@ -1,0 +1,48 @@
+        plenary-nvim
+        dressing-nvim
+        hologram-nvim
+        nvim-web-devicons
+        vim-tmux-navigator
+        nui-nvim
+        vimux
+        vim-illuminate
+        glow-nvim
+        gitsigns-nvim
+        nvim-autopairs
+        nvim-web-devicons
+        nvim-surround
+        nvim-notify
+        nvim-lsp-notify
+        vim-test
+        git-conflict-nvim
+        undotree
+        vim-astro
+        hologram-nvim
+
+        # Debuggers
+        nvim-dap-go
+        nvim-dap-python
+        nvim-dap-ui
+        neodev-nvim
+        nvim-dap-virtual-text
+        nvim-nio
+
+        # CMP
+        cmp-path
+        cmp-buffer
+        cmp-nvim-lsp
+        luasnip
+        cmp_luasnip
+        friendly-snippets
+        lspkind-nvim
+        lualine-lsp-progress
+
+        # Treesitter
+        nvim-ts-context-commentstring
+        nvim-ts-autotag
+        nvim-treesitter-textobjects
+
+        which-key-nvim
+        lazygit-nvim
+        nvim-surround
+        telescope-fzf-native-nvim

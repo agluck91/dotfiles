@@ -45,6 +45,7 @@
   "theme.bar.buttons.enableBorders": true,
   "theme.bar.buttons.borderSize": "0.02em",
   "bar.scrollSpeed": 5,
+  "show-special": false,
   "scalingPriority": "hyprland",
   "bar.workspaces.show_icons": false,
   "bar.workspaces.show_numbered": false,
@@ -69,5 +70,6 @@
       "󰄛",
       "Youtube"
     ]
-  ]
+  ],
+  "bar.workspaces.ignored": "-9[0-9]"
 }

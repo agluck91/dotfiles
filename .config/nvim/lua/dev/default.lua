@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>jk", "<cmd>Oil<CR>")
+vim.keymap.set("n", "<leader>jk",  function() require("mini.files").open() end, { desc = "Open MiniFiles" })
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
