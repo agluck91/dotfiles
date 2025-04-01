@@ -1,0 +1,6 @@
+call_parentheses = "None"
+collapse_simple_statement = "Always"
+indent_type = "Spaces"  # Or "Tabs" if you prefer
+indent_width = 2  # Or whatever you like
+column_width = 160 # Adjust as needed
+

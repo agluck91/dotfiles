@@ -15,7 +15,7 @@ return {
     })
     require('mini.move').setup({
       mappings = {
-          -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+        -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
         left = '<C-M-h>',
         right = '<C-M-l>',
         down = '<C-M-j>',
@@ -28,8 +28,8 @@ return {
         line_up = '<C-M-k>'
       }
     })
-    local miniclue = require('mini.clue')
-    miniclue.setup({
+        local miniclue = require('mini.clue')
+  miniclue.setup({
       triggers = {
         -- Leader triggers
         { mode = 'n', keys = '<Leader>' },

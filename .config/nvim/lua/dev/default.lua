@@ -47,10 +47,6 @@ vim.opt.clipboard = "unnamed"
 vim.opt.scrollbind = false
 vim.opt.wildmenu = true
 
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
-
 -- filetype related
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {"gitcommit"},

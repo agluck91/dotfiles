@@ -2,6 +2,11 @@
 ## Source from conf.d before our fish config
 source ~/.config/fish/conf.d/done.fish
 source ~/.config/fish/alias.fish
+set -Ux PYENV_ROOT $HOME/.pyenv
+set -Ux fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+
+status --is-interactive; and source (pyenv init --path | psub)
+
 
 ## Set values
 ## Run fastfetch as welcome message
