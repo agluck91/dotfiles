@@ -5,6 +5,7 @@ source ~/.config/fish/alias.fish
 ## Set values
 ## Run fastfetch as welcome message
 function fish_greeting
+    clear 
     # Check if we're on macOS
     if test -f /etc/os-release
         # For Linux systems, use /etc/os-release
