@@ -50,9 +50,6 @@ return {
     end,
   },
   {
-    "neovim/nvim-lspconfig",
-  },
-  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -65,7 +62,7 @@ return {
     },
     config = function()
       local cmp = require "cmp"
-      local luasnip = require("luasnip")
+      local luasnip = require "luasnip"
       local lspkind = require "lspkind"
       cmp.setup {
         snippet = {
