@@ -11,7 +11,16 @@ status --is-interactive; and source (pyenv init --path | psub)
 ## Set values
 ## Run fastfetch as welcome message
 function fish_greeting
-    set os_id (grep '^ID=' /etc/os-release | cut -d'=' -f2)
+    # Check if we're on macOS
+    if test -f /etc/os-release
+        # For Linux systems, use /etc/os-release
+        set os_id (grep '^ID=' /etc/os-release | cut -d'=' -f2)
+    else
+        # For macOS, use sw_vers
+        set os_id (sw_vers -productName)
+    end
+
+    # Check for "cachyos" in the os_id
     if string match -q "cachyos" $os_id
         fastfetch --logo arch --logo-padding-top 2 --logo-padding-left 2
     else
