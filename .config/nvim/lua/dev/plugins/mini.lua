@@ -1,17 +1,21 @@
 return {
-  { 'echasnovski/mini.nvim',
-    version = false,
-    config = function()
+  'echasnovski/mini.nvim',
+  version = false,
+  config = function()
     require('mini.ai').setup()
-    require('mini.files').setup()
     require('mini.pairs').setup()
     require('mini.sessions').setup()
     require('mini.icons').setup()
     require('mini.surround').setup()
     require('mini.comment').setup()
+    require('mini.files').setup({
+      mappings = {
+        synchronize = '<CR>',
+      },
+    })
     require('mini.move').setup({
       mappings = {
-        -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+          -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
         left = '<C-M-h>',
         right = '<C-M-l>',
         down = '<C-M-j>',
@@ -68,6 +72,6 @@ return {
         miniclue.gen_clues.z(),
       },
     })
-    end
-  }
+  end
 }
+
