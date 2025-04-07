@@ -15,6 +15,7 @@ alias zshrc="nvim ~/.zshrc"
 alias e="cd ~/dotfiles/ && nvim && cd -"
 alias a="cd ~/dotfiles/ && stow . && cd -"
 alias tf="tail -f -n 1000"
+alias sk="kitten ssh"
 
 # Misc Aliases
 alias lg="lazygit"
@@ -22,6 +23,7 @@ alias s="sesh connect \$(sesh list -i | gum filter --limit 1 --no-sort --fuzzy -
 alias start-proxy="python3 ~/scripts/start-proxy.py"
 alias kill-proxy="python3 ~/scripts/kill-proxy.py"
 alias os-icon="python3 ~/scripts/os-icon.py"
+alias snapshot="python3 ~/scripts/snap.py"
 
 # Docker Aliases
 alias drm="docker rm -f \$(docker ps -aq)"

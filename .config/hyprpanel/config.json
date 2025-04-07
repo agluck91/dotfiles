@@ -71,5 +71,11 @@
       "Youtube"
     ]
   ],
-  "bar.workspaces.ignored": "-9[0-9]"
+  "bar.workspaces.ignored": "-9[0-9]",
+  "menus.dashboard.shortcuts.left.shortcut1.command": "google-chrome-stable",
+  "menus.dashboard.shortcuts.left.shortcut1.tooltip": "Google Chrome",
+  "menus.dashboard.shortcuts.left.shortcut2.command": "cider2",
+  "menus.dashboard.shortcuts.left.shortcut2.tooltip": "Cider",
+  "menus.dashboard.shortcuts.left.shortcut3.command": "vesktop",
+  "menus.dashboard.shortcuts.right.shortcut3.command": "python3 $HOME/scripts/snap.py"
 }
