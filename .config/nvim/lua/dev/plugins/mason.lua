@@ -39,14 +39,13 @@ return {
         },
       }
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      require("mason-lspconfig").setup_handlers {
-        -- Default handler for all installed servers
-        function(server_name)
-          require("lspconfig")[server_name].setup {
-            capabilities = capabilities,
-          }
-        end,
-      }
+      -- Setup individual servers directly
+      local lspconfig = require "lspconfig"
+      for _, server_name in ipairs(require("mason-lspconfig").get_installed_servers()) do
+        lspconfig[server_name].setup {
+          capabilities = capabilities,
+        }
+      end
     end,
   },
   {
