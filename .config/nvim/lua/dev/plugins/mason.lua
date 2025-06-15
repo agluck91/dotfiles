@@ -24,6 +24,7 @@ return {
           "remark_ls",
           "mdx_analyzer",
           "nginx_language_server",
+          "jedi_language_server",
           "bashls",
           "terraformls",
           "tflint",
@@ -41,10 +42,16 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       -- Setup individual servers directly
       local lspconfig = require "lspconfig"
-      for _, server_name in ipairs(require("mason-lspconfig").get_installed_servers()) do
-        lspconfig[server_name].setup {
-          capabilities = capabilities,
-        }
+      local installed_servers = require("mason-lspconfig").get_installed_servers()
+
+      if installed_servers then
+        for _, server_name in ipairs(installed_servers) do
+          lspconfig[server_name].setup {
+            capabilities = capabilities,
+          }
+        end
+      else
+        vim.notify("No servers installed via mason-lspconfig.", vim.log.levels.WARN)
       end
     end,
   },
