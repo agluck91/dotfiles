@@ -8,8 +8,8 @@ return {
     dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
     config = function()
       require("mason-lspconfig").setup {
+        automatic_enable = false,
         ensure_installed = {
-          "lua_ls",
           "rust_analyzer",
           "emmet_ls",
           "tailwindcss",
@@ -18,7 +18,6 @@ return {
           "docker_compose_language_service",
           "gopls",
           "helm_ls",
-          "html",
           "jsonls",
           "lua_ls",
           "remark_ls",
