@@ -115,6 +115,9 @@ end
 starship init fish | source
 zoxide init fish | source
 atuin init fish | source
+
+set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
+carapace _carapace | source
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
