@@ -121,3 +121,6 @@ carapace _carapace | source
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# opencode
+fish_add_path /Users/agluck/.opencode/bin

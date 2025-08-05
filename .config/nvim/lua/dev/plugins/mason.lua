@@ -109,7 +109,7 @@ return {
               mode = "symbol_text",
               maxwidth = 70,
               show_labelDetails = true,
-            }(entry, item)
+            } (entry, item)
             if color_item.abbr_hl_group then
               item.kind_hl_group = color_item.abbr_hl_group
               item.kind = color_item.abbr
