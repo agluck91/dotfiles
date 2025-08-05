@@ -124,3 +124,10 @@ set --export PATH $BUN_INSTALL/bin $PATH
 
 # opencode
 fish_add_path /Users/agluck/.opencode/bin
+set -x JAVA_HOME /usr/lib/jvm/java-17-openjdk/
+
+# Android development environment
+set -x ANDROID_HOME $HOME/Android/Sdk
+set -x ANDROID_SDK_ROOT $HOME/Android/Sdk
+set -x PATH $PATH $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools
+set -x QT_QPA_PLATFORM xcb
