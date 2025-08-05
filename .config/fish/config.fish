@@ -131,3 +131,6 @@ set -x ANDROID_HOME $HOME/Android/Sdk
 set -x ANDROID_SDK_ROOT $HOME/Android/Sdk
 set -x PATH $PATH $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools
 set -x QT_QPA_PLATFORM xcb
+
+# opencode
+fish_add_path /home/agluck/.opencode/bin
