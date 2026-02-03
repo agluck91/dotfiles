@@ -36,7 +36,7 @@
   "bar.battery.hideLabelWhenFull": false,
   "bar.battery.label": false,
   "bar.systray.ignore": [],
-  "bar.clock.format": "%a %b %d  %I:%M %p",
+  "bar.clock.format": "%a %b %d  %H:%M",
   "bar.clock.showTime": true,
   "bar.clock.showIcon": true,
   "bar.media.show_active_only": true,
@@ -53,16 +53,16 @@
   "bar.workspaces.monitorSpecific": true,
   "bar.workspaces.showWsIcons": true,
   "bar.workspaces.workspaceIconMap": {
-    "1": "",
+    "1": "",
     "2": "󰅭",
     "3": "󰍡",
-    "4": "",
+    "4": "",
     "5": "",
     "6": "",
     "7": "",
     "8": "",
     "9": "",
-    "10": ""
+    "10": "Q"
   },
   "theme.bar.floating": false,
   "bar.windowtitle.title_map": [
@@ -97,5 +97,8 @@
   "bar.customModules.storage.paths": [
     "/"
   ],
-  "theme.bar.buttons.volume.enableBorder": false
+  "theme.bar.buttons.volume.enableBorder": false,
+  "menus.clock.time.military": true,
+  "theme.bar.buttons.clock.enableBorder": false,
+  "bar.clock.icon": "󰸗"
 }

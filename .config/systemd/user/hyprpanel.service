@@ -1,0 +1,27 @@
+[Unit]
+Description=Hyprpanel (Wayland panel) for Hyprland
+After=graphical-session.target xdg-desktop-portal.service xdg-desktop-portal-hyprland.service
+Wants=xdg-desktop-portal.service xdg-desktop-portal-hyprland.service
+
+[Service]
+Type=simple
+# Wayland/Hypr env
+Environment=XDG_CURRENT_DESKTOP=Hyprland
+Environment=GDK_BACKEND=wayland
+Environment=HYPRPANEL_CONFIG=%h/.config/hyprpanel/config.json
+
+# Give session a moment to settle
+ExecStartPre=/bin/sleep 0.6
+
+# Don’t start if another instance is running
+ExecStartPre=/bin/sh -lc '! pgrep -x hyprpanel >/dev/null'
+
+# Source Hyprland session env and start the app binary directly
+ExecStart=/bin/sh -lc '. "$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.env" 2>/dev/null || true; exec /usr/share/hyprpanel/hyprpanel-app'
+
+# Restart only on actual crashes; avoid loop if “already running”
+Restart=on-failure
+RestartSec=2s
+
+[Install]
+WantedBy=graphical-session.target

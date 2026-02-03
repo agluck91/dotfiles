@@ -1,2 +1,2 @@
-require("dev.default")
-require("dev.lazy")
+require "dev.default"
+require "dev.lazy"

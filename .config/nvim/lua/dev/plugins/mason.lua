@@ -7,8 +7,14 @@ return {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
     config = function()
+      -- Set up default capabilities for all LSP servers using the new vim.lsp.config API
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      vim.lsp.config("*", {
+        capabilities = capabilities,
+      })
+
+      -- Mason-lspconfig will automatically enable installed servers via vim.lsp.enable()
       require("mason-lspconfig").setup {
-        automatic_enable = false,
         ensure_installed = {
           "rust_analyzer",
           "emmet_ls",
@@ -38,20 +44,6 @@ return {
           "lemminx",
         },
       }
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      -- Setup individual servers directly
-      local lspconfig = require "lspconfig"
-      local installed_servers = require("mason-lspconfig").get_installed_servers()
-
-      if installed_servers then
-        for _, server_name in ipairs(installed_servers) do
-          lspconfig[server_name].setup {
-            capabilities = capabilities,
-          }
-        end
-      else
-        vim.notify("No servers installed via mason-lspconfig.", vim.log.levels.WARN)
-      end
     end,
   },
   {
@@ -68,8 +60,10 @@ return {
     config = function()
       local cmp = require "cmp"
       local luasnip = require "luasnip"
-      local lspkind = require "lspkind"
       cmp.setup {
+        experimental = {
+          ghost_text = true, -- Shows preview of completion
+        },
         snippet = {
           expand = function(args) luasnip.lsp_expand(args.body) end,
         },
@@ -98,26 +92,50 @@ return {
           end, { "i", "s" }),
         },
         sources = cmp.config.sources {
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
+          { name = "nvim_lsp", priority = 1000 },
+          { name = "nvim_lsp_signature_help", priority = 900 },
+          { name = "luasnip", priority = 600 },
           { name = "buffer" },
+          { name = "copilot", group_index = 2, priority = 1100 },
+          { name = "path", option = { trailing_slash = true, label_trailing_slash = true } },
         },
         formatting = {
           format = function(entry, item)
             local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
             item = require("lspkind").cmp_format {
               mode = "symbol_text",
-              maxwidth = 70,
+              maxwidth = 100,
               show_labelDetails = true,
-            } (entry, item)
+            }(entry, item)
             if color_item.abbr_hl_group then
               item.kind_hl_group = color_item.abbr_hl_group
               item.kind = color_item.abbr
+            end
+            if entry.source.name == "copilot" then
+              item.icon = " "
+              item.kind = "Copilot"
+              item.kind_hl_group = "CmpItemKindCopilot"
             end
             return item
           end,
         },
       }
+      cmp.setup.cmdline("/", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = "buffer" },
+        },
+      })
+
+      cmp.setup.cmdline(":", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = "path" },
+        }, {
+          { name = "cmdline" },
+        }),
+        matching = { disallow_symbol_nonprefix_matching = false },
+      })
     end,
   },
 }

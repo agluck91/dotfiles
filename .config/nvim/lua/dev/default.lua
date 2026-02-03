@@ -47,6 +47,7 @@ vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamed"
 vim.opt.scrollbind = false
 vim.opt.wildmenu = true
+vim.opt.winborder = "rounded" -- Set default border for floating windows (Neovim 0.11+)
 
 vim.api.nvim_create_autocmd("CursorHold", {
   callback = function() vim.diagnostic.open_float(nil, { focusable = false, border = "rounded" }) end,

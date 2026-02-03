@@ -23,6 +23,12 @@ function fish_greeting
     end
 end
 
+# Start ssh-agent if not already running
+if not set -q SSH_AGENT_PID
+    eval (ssh-agent -c) >/dev/null
+    ssh-add ~/.ssh/id_ed25519 ^/dev/null
+end
+
 # Format man pages
 set -x MANROFFOPT "-c"
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
