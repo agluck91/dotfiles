@@ -36,7 +36,6 @@ return {
                 nvimtree = true,
                 telescope = true,
                 treesitter = true,
-                treesitter_context = true,
                 indent_blankline = {
                     enabled = true,
                     scope_color = "blue",

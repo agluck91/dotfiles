@@ -23,6 +23,7 @@ return {
     statuscolumn = { enabled = true },
     words = { enabled = true },
     dashboard = { enabled = true },
+    terminal = { enabled = true },
     gitbrowse = { enabled = true },
   },
   keys = {

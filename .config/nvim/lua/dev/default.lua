@@ -1,8 +1,21 @@
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>jk", function() require("mini.files").open() end, { desc = "Open MiniFiles" })
+vim.keymap.set("n", "<leader>JK", function() require("mini.files").open(vim.api.nvim_buf_get_name(0)) end, { desc = "Open MiniFiles at Current File" })
+
+-- Clipboard keybinds: explicit system clipboard yanking
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
+vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]])
+
+-- Delete/change without overwriting clipboard (black hole register)
+vim.keymap.set({ "n", "v" }, "d", [["_d]])
+vim.keymap.set({ "n", "v" }, "D", [["_D]])
+vim.keymap.set({ "n", "v" }, "c", [["_c]])
+vim.keymap.set({ "n", "v" }, "C", [["_C]])
+vim.keymap.set({ "n", "v" }, "x", [["_x]])
+vim.keymap.set({ "n", "v" }, "X", [["_X]])
 
 --Keymaps for config
 vim.keymap.set("n", "<leader>ccp", "<cmd>e ~/.config/nvim/lua/setup/packer.lua<CR>")
@@ -45,7 +58,6 @@ vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 vim.opt.textwidth = 120
 vim.opt.mouse = "a"
-vim.opt.clipboard = "unnamed"
 vim.opt.scrollbind = false
 vim.opt.wildmenu = true
 vim.opt.winborder = "rounded" -- Set default border for floating windows (Neovim 0.11+)
