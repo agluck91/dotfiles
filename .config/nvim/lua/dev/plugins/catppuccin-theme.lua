@@ -1,7 +1,7 @@
 return {
     "catppuccin/nvim",
     name = "catppuccin",
-    tag = "v1.7.0",
+    -- Updated to latest version for blink.cmp support
     enabled = true,
     priority = 1000,
     config = function()
@@ -22,7 +22,6 @@ return {
                 mocha = function(C)
                     return {
                         NvimTreeNormal = {bg = C.none},
-                        CmpBorder = {fg = C.surface2},
                         Pmenu = {bg = C.none},
                         NormalFloat = {bg = C.none},
                         TelescopeBorder = {link = "FloatBorder"}
@@ -31,7 +30,7 @@ return {
             },
             integrations = {
                 barbar = true,
-                cmp = true,
+                blink_cmp = true,
                 gitsigns = true,
                 native_lsp = {enabled = true},
                 nvimtree = true,

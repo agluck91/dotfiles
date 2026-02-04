@@ -18,6 +18,7 @@ vim.keymap.set("n", "<C-l>", ":wincmd l<CR>")
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 --Vim Config
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 2
@@ -48,6 +49,7 @@ vim.opt.clipboard = "unnamed"
 vim.opt.scrollbind = false
 vim.opt.wildmenu = true
 vim.opt.winborder = "rounded" -- Set default border for floating windows (Neovim 0.11+)
+vim.opt.autoread = true -- Automatically reload files when changed outside of Neovim
 
 vim.api.nvim_create_autocmd("CursorHold", {
   callback = function() vim.diagnostic.open_float(nil, { focusable = false, border = "rounded" }) end,
