@@ -37,6 +37,10 @@ set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -U __done_min_cmd_duration 10000
 set -U __done_notification_urgency_level low
 
+# Set default editor
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+
 ## Environment setup
 # Apply .profile: use this to put fish compatible .profile stuff in
 if test -f ~/.fish_profile
