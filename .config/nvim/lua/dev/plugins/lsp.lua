@@ -171,7 +171,6 @@ return {
         },
       },
 
-      -- Sources configuration (replaces your nvim-cmp sources)
       sources = {
         default = { "lsp", "path", "snippets", "buffer", "copilot" },
         providers = {
