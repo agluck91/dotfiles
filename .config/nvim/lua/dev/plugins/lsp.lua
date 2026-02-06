@@ -25,8 +25,8 @@ return {
             },
             workspace = {
               library = {
-                vim.env.VIMRUNTIME, -- Neovim runtime files
-                "${3rd}/luv/library", -- Full Neovim API definitions
+                vim.env.VIMRUNTIME,    -- Neovim runtime files
+                "${3rd}/luv/library",  -- Full Neovim API definitions
               },
               checkThirdParty = false, -- Don't ask about configuring luassert/busted
             },
@@ -44,15 +44,22 @@ return {
           local opts = { buffer = bufnr, silent = true }
           vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "LSP Hover" }))
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to Definition" }))
-          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Go to Declaration" }))
-          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Go to Implementation" }))
-          vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, vim.tbl_extend("force", opts, { desc = "Go to Type Definition" }))
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration,
+            vim.tbl_extend("force", opts, { desc = "Go to Declaration" }))
+          vim.keymap.set("n", "gi", vim.lsp.buf.implementation,
+            vim.tbl_extend("force", opts, { desc = "Go to Implementation" }))
+          vim.keymap.set("n", "gy", vim.lsp.buf.type_definition,
+            vim.tbl_extend("force", opts, { desc = "Go to Type Definition" }))
           vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "List References" }))
-          vim.keymap.set("n", "<C-S-k>", vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "Signature Help" }))
-          vim.keymap.set("i", "<C-S-k>", vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "Signature Help" }))
+          vim.keymap.set("n", "<C-S-k>", vim.lsp.buf.signature_help,
+            vim.tbl_extend("force", opts, { desc = "Signature Help" }))
+          vim.keymap.set("i", "<C-S-k>", vim.lsp.buf.signature_help,
+            vim.tbl_extend("force", opts, { desc = "Signature Help" }))
           vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename Symbol" }))
-          vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code Action" }))
-          vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format { async = true } end, vim.tbl_extend("force", opts, { desc = "Format Document" }))
+          vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action,
+            vim.tbl_extend("force", opts, { desc = "Code Action" }))
+          vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format { async = true } end,
+            vim.tbl_extend("force", opts, { desc = "Format Document" }))
         end,
       })
 

@@ -75,6 +75,7 @@ alias gcb="git checkout -b"
 alias gbr="git branch"
 alias gpl="git pull"
 alias gp="git push"
+alias gr='git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') && git pull'
 
 # Common use
 alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"
@@ -116,3 +117,16 @@ alias jctl="journalctl -p 3 -xb"
 
 # Recent installed packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+
+## IL2-IL4 Staging - pb-0008-bastion
+set C1D_BASTION_IL2_IL4_STAGING 10.162.90.53
+## IL2-IL4 Production - pb-0014-bastion
+set C1D_BASTION_IL2_IL4_PROD 10.162.218.60
+## IL5 Production Staging - pb-0015-bastion
+set C1D_BASTION_IL5 10.162.122.41
+alias refresh_pf="sudo pfctl -f /etc/pf.conf"
+alias delete_aws_tokens="set -e AWS_ACCESS_KEY_ID; set -e AWS_SECRET_ACCESS_KEY; set -e AWS_SESSION_TOKEN; set -e AWS_PROFILE"
+alias il4_aws_tokens='eval "$(aws configure export-credentials --profile il2-il4-prod --format env)"'
+alias il5_aws_tokens='eval "$(aws configure export-credentials --profile il5-prod --format env)"'
+alias il4_sops_setup="delete_aws_tokens;$HOME/projects/partybus/tools/awesome-devops/scripts/aws-eks-assume-role/assume-role.sh $C1D_BASTION_IL2_IL4_PROD js_mdo il2-il4-prod ~/.keys/pb-il2-il4-prod.pem && export AWS_PROFILE=il2-il4-prod && il4_aws_tokens"
+alias il5_sops_setup="delete_aws_tokens;$HOME/projects/partybus/tools/awesome-devops/scripts/aws-eks-assume-role/assume-role.sh $C1D_BASTION_IL5 js_mdo il5-prod ~/.keys/pb-il5-new-bastion.pem && export AWS_PROFILE=il5-prod && il5_aws_tokens"

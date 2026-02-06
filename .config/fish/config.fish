@@ -13,6 +13,7 @@ function fish_greeting
     else
         # For macOS, use sw_vers
         set os_id (sw_vers -productName)
+        
     end
 
     # Check for "cachyos" in the os_id
@@ -64,6 +65,7 @@ end
 if test (uname) = "Darwin"
     set -gx PATH /opt/homebrew/bin $PATH  # For Apple Silicon
     set -gx PATH /opt/hombrew/sbin $PATH
+    set -gx PATH /Users/agluck/.volta/bin $PATH
     # set -gx PATH /usr/local/bin $PATH  # Uncomment for Intel Macs
 end
 
@@ -144,3 +146,9 @@ set -x QT_QPA_PLATFORM xcb
 
 # opencode
 fish_add_path /home/agluck/.opencode/bin
+fish_add_path /home/agluck/.local/bin
+fish_add_path /home/agluck/.cargo/bin
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+set --export --prepend PATH "/Users/agluck/.rd/bin"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
