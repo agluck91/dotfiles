@@ -1,7 +1,8 @@
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>jk", function() require("mini.files").open() end, { desc = "Open MiniFiles" })
-vim.keymap.set("n", "<leader>JK", function() require("mini.files").open(vim.api.nvim_buf_get_name(0)) end, { desc = "Open MiniFiles at Current File" })
+vim.keymap.set("n", "<leader>JK", function() require("mini.files").open(vim.api.nvim_buf_get_name(0)) end,
+  { desc = "Open MiniFiles at Current File" })
 
 -- Clipboard keybinds: explicit system clipboard yanking
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
@@ -61,7 +62,7 @@ vim.opt.mouse = "a"
 vim.opt.scrollbind = false
 vim.opt.wildmenu = true
 vim.opt.winborder = "rounded" -- Set default border for floating windows (Neovim 0.11+)
-vim.opt.autoread = true -- Automatically reload files when changed outside of Neovim
+vim.opt.autoread = true       -- Automatically reload files when changed outside of Neovim
 
 vim.api.nvim_create_autocmd("CursorHold", {
   callback = function() vim.diagnostic.open_float(nil, { focusable = false, border = "rounded" }) end,

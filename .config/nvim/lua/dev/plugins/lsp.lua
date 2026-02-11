@@ -201,17 +201,6 @@ return {
       signature = {
         enabled = true,
       },
-
-      -- Command line completion (for : and /)
-      cmdline = {
-        enabled = true,
-        sources = {
-          -- For : commands
-          [":"] = { "cmdline" },
-          -- For / search
-          ["/"] = { "buffer" },
-        },
-      },
     },
     opts_extend = { "sources.default" },
   },

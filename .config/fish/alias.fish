@@ -39,6 +39,7 @@ alias dex="docker exec -it"
 
 # Kubernetes Aliases
 alias k="kubectl"
+alias kpc="bash ~/scripts/pull_kubeconfig.sh"
 alias kg="kubectl get"
 alias kd="kubectl describe"
 alias krm="kubectl delete"

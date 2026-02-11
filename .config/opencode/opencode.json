@@ -1,29 +1,42 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "theme": "system",
+  "autoshare": false,
+  "autoupdate": true,
+  "mcp": {
+    "context7": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "grep": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.grep.app"
+    }
+  },
   "provider": {
     "moonshot": {
+      "models": {
+        "kimi-k2-0711-preview": {}
+      },
       "npm": "@ai-sdk/openai-compatible",
       "options": {
         "baseURL": "https://api.moonshot.ai/v1"
-      },
+      }
+    },
+    "ollama": {
       "models": {
-        "kimi-k2-0711-preview": {}
+        "qwen3-coder:30b": {
+          "_launch": true,
+          "name": "qwen3-coder:30b"
+        }
+      },
+      "name": "Ollama (local)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:11434/v1"
       }
     }
   },
-  "mcp": {
-    "context7": {
-      "type": "remote",
-      "url": "https://mcp.context7.com/mcp",
-      "enabled": true
-    },
-    "grep": {
-      "type": "remote",
-      "url": "https://mcp.grep.app",
-      "enabled": true
-    }
-  },
-  "autoshare": false,
-  "autoupdate": true
+  "theme": "system"
 }
