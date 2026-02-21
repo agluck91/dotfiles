@@ -171,7 +171,6 @@ return {
         },
       },
 
-      -- Sources configuration (replaces your nvim-cmp sources)
       sources = {
         default = { "lsp", "path", "snippets", "buffer", "copilot" },
         providers = {
@@ -201,17 +200,6 @@ return {
       -- Signature help (similar to nvim-cmp signature help)
       signature = {
         enabled = true,
-      },
-
-      -- Command line completion (for : and /)
-      cmdline = {
-        enabled = true,
-        sources = {
-          -- For : commands
-          [":"] = { "cmdline" },
-          -- For / search
-          ["/"] = { "buffer" },
-        },
       },
     },
     opts_extend = { "sources.default" },
