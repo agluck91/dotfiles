@@ -152,3 +152,7 @@ fish_add_path /home/agluck/.cargo/bin
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 set --export --prepend PATH "/Users/agluck/.rd/bin"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+
+# peon-ping quick controls
+function peon; bash /home/agluck/.claude/hooks/peon-ping/peon.sh $argv; end
