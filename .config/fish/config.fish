@@ -152,3 +152,13 @@ fish_add_path /home/agluck/.cargo/bin
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 set --export --prepend PATH "/Users/agluck/.rd/bin"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# peon-ping quick controls
+function peon; bash /Users/agluck/.claude/hooks/peon-ping/peon.sh $argv; end
+
+# pnpm
+set -gx PNPM_HOME "/Users/agluck/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
