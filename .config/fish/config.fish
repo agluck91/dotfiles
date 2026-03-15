@@ -65,7 +65,7 @@ end
 if test (uname) = "Darwin"
     set -gx PATH /opt/homebrew/bin $PATH  # For Apple Silicon
     set -gx PATH /opt/hombrew/sbin $PATH
-    set -gx PATH /Users/agluck/.volta/bin $PATH
+    set -gx PATH $HOME/.volta/bin $PATH
     # set -gx PATH /usr/local/bin $PATH  # Uncomment for Intel Macs
 end
 
@@ -135,7 +135,7 @@ set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
 # opencode
-fish_add_path /Users/agluck/.opencode/bin
+fish_add_path $HOME/.opencode/bin
 set -x JAVA_HOME /usr/lib/jvm/java-17-openjdk/
 
 # Android development environment
@@ -144,21 +144,23 @@ set -x ANDROID_SDK_ROOT $HOME/Android/Sdk
 set -x PATH $PATH $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools
 set -x QT_QPA_PLATFORM xcb
 
-# opencode
-fish_add_path /home/agluck/.opencode/bin
-fish_add_path /home/agluck/.local/bin
-fish_add_path /home/agluck/.cargo/bin
+fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.cargo/bin
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-set --export --prepend PATH "/Users/agluck/.rd/bin"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+if test (uname) = "Darwin"
+    set --export --prepend PATH "$HOME/.rd/bin"
+end
 
 # peon-ping quick controls
-function peon; bash /Users/agluck/.claude/hooks/peon-ping/peon.sh $argv; end
+function peon; bash $HOME/.claude/hooks/peon-ping/peon.sh $argv; end
 
 # pnpm
-set -gx PNPM_HOME "/Users/agluck/Library/pnpm"
+if test (uname) = "Darwin"
+    set -gx PNPM_HOME "$HOME/Library/pnpm"
+else
+    set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+end
 if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end

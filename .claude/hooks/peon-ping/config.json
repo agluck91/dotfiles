@@ -36,5 +36,10 @@
   "headphones_only": false,
   "meeting_detect": false,
   "notification_style": "standard",
-  "project_name_map": {}
+  "project_name_map": {},
+  "suppress_sound_when_tab_focused": false,
+  "notification_position": "top-center",
+  "notification_dismiss_seconds": 4,
+  "notification_title_override": "",
+  "notification_title_script": ""
 }
