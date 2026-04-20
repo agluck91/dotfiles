@@ -1,5 +1,10 @@
 vim.g.mapleader = " "
 
+vim.keymap.set("n", "<C-h>", ":wincmd h<CR>")
+vim.keymap.set("n", "<C-j>", ":wincmd j<CR>")
+vim.keymap.set("n", "<C-k>", ":wincmd k<CR>")
+vim.keymap.set("n", "<C-l>", ":wincmd l<CR>")
+
 vim.keymap.set("n", "<leader>jk", function() require("mini.files").open() end, { desc = "Open MiniFiles" })
 vim.keymap.set("n", "<leader>JK", function() require("mini.files").open(vim.api.nvim_buf_get_name(0)) end,
   { desc = "Open MiniFiles at Current File" })
@@ -22,16 +27,14 @@ vim.keymap.set({ "n", "v" }, "X", [["_X]])
 vim.keymap.set("n", "<leader>ccp", "<cmd>e ~/.config/nvim/lua/setup/packer.lua<CR>")
 vim.keymap.set("n", "<leader>ccr", "<cmd>e ~/.config/nvim/lua/setup/remap.lua<CR>")
 
-vim.keymap.set("n", "<C-k>", ":wincmd k<CR>")
-vim.keymap.set("n", "<C-j>", ":wincmd j<CR>")
-vim.keymap.set("n", "<C-h>", ":wincmd h<CR>")
-vim.keymap.set("n", "<C-l>", ":wincmd l<CR>")
 
 --Useless Keymaps
 
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 --Vim Config
+
+vim.opt.shell = "/bin/sh" -- Use sh for subshells (avoids fish startup overhead in plugins like vim-tmux-navigator)
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -63,6 +66,17 @@ vim.opt.scrollbind = false
 vim.opt.wildmenu = true
 vim.opt.winborder = "rounded" -- Set default border for floating windows (Neovim 0.11+)
 vim.opt.autoread = true       -- Automatically reload files when changed outside of Neovim
+
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  callback = function()
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.bo[buf].buftype == "terminal" then
+        local job = vim.b[buf].terminal_job_id
+        if job then vim.fn.jobstop(job) end
+      end
+    end
+  end,
+})
 
 vim.api.nvim_create_autocmd("CursorHold", {
   callback = function() vim.diagnostic.open_float(nil, { focusable = false, border = "rounded" }) end,

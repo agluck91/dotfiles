@@ -1,0 +1,10 @@
+{
+  "last_played": {
+    "session.start": "sounds/session_start_1.mp3",
+    "task.acknowledge": "sounds/acknowledge_5.mp3",
+    "user.spam": "sounds/spam_4.mp3",
+    "task.complete": "sounds/complete_3.mp3"
+  },
+  "session_packs": {},
+  "last_session_start_sound_time": 1773768486.044
+}

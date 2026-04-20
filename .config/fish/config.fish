@@ -1,4 +1,16 @@
 
+# Cache init scripts — only regenerates when the binary changes
+function __init_cached
+    set -l bin (command -v $argv[1])
+    test -z "$bin"; and return
+    set -l cache ~/.cache/fish/(string replace -a / _ $bin)_(string join _ $argv[2..]).fish
+    if not test -f $cache; or test $bin -nt $cache
+        mkdir -p ~/.cache/fish
+        $bin $argv[2..] > $cache 2>/dev/null
+    end
+    source $cache
+end
+
 ## Source from conf.d before our fish config
 source ~/.config/fish/conf.d/done.fish
 source ~/.config/fish/alias.fish
@@ -27,7 +39,9 @@ end
 # Start ssh-agent if not already running
 if not set -q SSH_AGENT_PID
     eval (ssh-agent -c) >/dev/null
-    ssh-add ~/.ssh/id_ed25519 ^/dev/null
+end
+if not ssh-add -l 2>/dev/null | grep -q id_ed25519
+    ssh-add ~/.ssh/id_ed25519 2>/dev/null
 end
 
 # Format man pages
@@ -62,6 +76,10 @@ if test -d ~/Applications/depot_tools
     end
 end
 
+if not test (uname) = "Darwin"
+    set -gx TERMINAL kitty
+end
+
 if test (uname) = "Darwin"
     set -gx PATH /opt/homebrew/bin $PATH  # For Apple Silicon
     set -gx PATH /opt/hombrew/sbin $PATH
@@ -69,10 +87,10 @@ if test (uname) = "Darwin"
     # set -gx PATH /usr/local/bin $PATH  # Uncomment for Intel Macs
 end
 
-set -Ux PYENV_ROOT $HOME/.pyenv
-set -Ux fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+set -gx PYENV_ROOT $HOME/.pyenv
+fish_add_path $PYENV_ROOT/bin
 
-status --is-interactive; and source (pyenv init --path | psub)
+__init_cached pyenv init --path
 ## Functions
 # Functions needed for !! and !$ https://github.com/oh-my-fish/plugin-bang-bang
 function __history_previous_command
@@ -124,12 +142,12 @@ function copy
 end
 
 
-starship init fish | source
-zoxide init fish | source
-atuin init fish | source
+__init_cached starship init fish
+__init_cached zoxide init fish
+__init_cached atuin init fish
 
-set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
-carapace _carapace | source
+set -gx CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense'
+__init_cached carapace _carapace fish
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH

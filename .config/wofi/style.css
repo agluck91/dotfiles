@@ -68,7 +68,7 @@ window {
 #outer-box {
   padding: 16px;
   border-radius: 1.2em;
-  background-color: @base;
+  background-color: @crust;
   border: 2px solid @blue;
   width: 350px;
 }

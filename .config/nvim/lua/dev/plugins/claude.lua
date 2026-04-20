@@ -1,3 +1,13 @@
+local function nav(wincmd_dir, tmux_dir)
+  return function()
+    local cur = vim.api.nvim_get_current_win()
+    vim.cmd("wincmd " .. wincmd_dir)
+    if vim.api.nvim_get_current_win() == cur then
+      vim.fn.jobstart("tmux select-pane -" .. tmux_dir, { detach = true })
+    end
+  end
+end
+
 return {
   "coder/claudecode.nvim",
   dependencies = { "folke/snacks.nvim" },
@@ -6,11 +16,10 @@ return {
     terminal = {
       snacks_win_opts = {
         keys = {
-          nav_left  = { "<C-h>", function() vim.cmd("TmuxNavigateLeft")     end, mode = "t" },
-          nav_down  = { "<C-j>", function() vim.cmd("TmuxNavigateDown")     end, mode = "t" },
-          nav_up    = { "<C-k>", function() vim.cmd("TmuxNavigateUp")       end, mode = "t" },
-          nav_right = { "<C-l>", function() vim.cmd("TmuxNavigateRight")    end, mode = "t" },
-          nav_prev  = { "<C-\\>", function() vim.cmd("TmuxNavigatePrevious") end, mode = "t" },
+          nav_left  = { "<C-h>", nav("h", "L"), mode = "t" },
+          nav_down  = { "<C-j>", nav("j", "D"), mode = "t" },
+          nav_up    = { "<C-k>", nav("k", "U"), mode = "t" },
+          nav_right = { "<C-l>", nav("l", "R"), mode = "t" },
         },
       },
     },

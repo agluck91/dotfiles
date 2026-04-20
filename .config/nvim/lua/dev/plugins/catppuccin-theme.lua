@@ -10,7 +10,7 @@ return {
         local catppuccin = require("catppuccin")
 
         catppuccin.setup({
-            transparent_background = true,
+            transparent_background = false,
             flavour = "mocha",
             term_colors = true,
             styles = {
@@ -21,9 +21,11 @@ return {
             highlight_overrides = {
                 mocha = function(C)
                     return {
-                        NvimTreeNormal = {bg = C.none},
-                        Pmenu = {bg = C.none},
-                        NormalFloat = {bg = C.none},
+                        Normal = {bg = C.crust},
+                        NormalNC = {bg = C.crust},
+                        NvimTreeNormal = {bg = C.crust},
+                        Pmenu = {bg = C.crust},
+                        NormalFloat = {bg = C.crust},
                         TelescopeBorder = {link = "FloatBorder"}
                     }
                 end
