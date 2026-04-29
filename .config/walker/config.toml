@@ -1,0 +1,35 @@
+# Walker launcher config
+# Default (no prefix) = desktop apps
+# Prefixes: = calc, @ web search, : clipboard, > runner, / finder, ! emojis
+
+theme = "catppuccin-mocha"
+
+[[plugins]]
+name = "desktopapplications"
+
+[[plugins]]
+name = "calc"
+prefix = "="
+
+[[plugins]]
+name = "websearch"
+prefix = "@"
+
+[[plugins]]
+name = "clipboard"
+prefix = ":"
+
+[[plugins]]
+name = "runner"
+prefix = ">"
+
+[[plugins]]
+name = "finder"
+prefix = "/"
+
+[[plugins]]
+name = "hyprland"
+
+[[plugins]]
+name = "emojis"
+prefix = "!"
