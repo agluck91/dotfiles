@@ -4,38 +4,41 @@
       "left": [
         "dashboard",
         "workspaces",
+        "windowtitle",
         "media"
       ],
       "middle": [
-        "windowtitle",
         "clock",
         "notifications"
       ],
       "right": [
         "volume",
-        "microphone",
         "network",
         "bluetooth",
         "battery",
         "systray",
-        "updates"
+        "power"
       ]
     }
   },
   "theme.bar.location": "top",
   "theme.bar.transparent": true,
+  "theme.bar.floating": true,
   "notifications.position": "top",
   "theme.notification.enableShadow": true,
   "notifications.showActionsOnHover": false,
   "menus.clock.time.hideSeconds": true,
   "dbus.notifications.enabled": true,
-  "bar.volume.label": true,
+  "bar.volume.label": false,
+  "bar.microphone.label": false,
   "bar.network.label": false,
   "bar.network.showWifiInfo": true,
   "bar.bluetooth.label": false,
   "bar.battery.hideLabelWhenFull": false,
   "bar.battery.label": false,
-  "bar.systray.ignore": [],
+  "bar.systray.ignore": [
+    "vesktop"
+  ],
   "bar.clock.format": "%a %b %d  %H:%M",
   "bar.clock.showTime": true,
   "bar.clock.showIcon": true,
@@ -54,17 +57,16 @@
   "bar.workspaces.showWsIcons": true,
   "bar.workspaces.workspaceIconMap": {
     "1": "",
-    "2": "󰅭",
+    "2": "",
     "3": "󰍡",
-    "4": "",
-    "5": "",
-    "6": "",
-    "7": "",
-    "8": "",
-    "9": "",
-    "10": "Q"
+    "4": "",
+    "5": "󰊗",
+    "6": "󰣇",
+    "7": "󰣇",
+    "8": "󰣇",
+    "9": "󰣇",
+    "10": "󰣇"
   },
-  "theme.bar.floating": false,
   "bar.windowtitle.title_map": [
     [
       "youtube",

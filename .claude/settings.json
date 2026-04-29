@@ -164,6 +164,7 @@
         "repo": "JuliusBrussee/caveman"
       }
     }
+    "clangd-lsp@claude-plugins-official": true
   },
   "skipDangerousModePermissionPrompt": true
 }
